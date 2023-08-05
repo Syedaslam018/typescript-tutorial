@@ -1,27 +1,10 @@
-var num1Element = document.getElementById('num1');
-var num2Element = document.getElementById('num2');
-var buttonElement = document.querySelector('button');
-function add(num1, num2) {
-    if (typeof num1 === 'number' && typeof num2 === 'number') {
-        return num1 + num2;
-    }
-    else if (typeof num1 === 'string' && typeof num2 === 'string') {
-        return num1 + " " + num2;
-    }
-    return +num1 + +num2;
-}
-function forObjects(object) {
-    console.log(object.val, object.timestamp);
-}
-var numArray = [];
-var textArray = [];
-buttonElement.addEventListener('click', function () {
-    var num1 = num1Element.value;
-    var num2 = num2Element.value;
-    var numResult = add(+num1, +num2);
-    numArray.push(numResult);
-    var textResult = add(num1, num2);
-    textArray.push(textResult);
-    console.log(numArray, textArray);
-    forObjects({ val: numResult, timestamp: new Date() });
-});
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = __importDefault(require("express"));
+const todos_1 = __importDefault(require("./routes/todos"));
+const app = (0, express_1.default)();
+app.use(todos_1.default);
+app.listen(3000);
